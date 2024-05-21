@@ -1,0 +1,48 @@
+public static void compressFile(String inputFile, String compressedFile) throws IOException {
+
+        BufferedReader br = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(compressedFile));
+   Map<Character, String> charCodeMap = new HashMap<>();
+        int code = 1;
+String line; 
+
+        while ((line = br.readLine()) != null) {
+            for (char c : line.toCharArray()) {
+                if (!charCodeMap.containsKey(c)) {
+                    charCodeMap.put(c, String.valueOf(code));
+                    code++;
+                }
+            }
+        }
+
+
+br = new BufferedReader(new FileReader(inputFile));
+        while ((line = br.readLine()) != null) {
+            for (char c : line.toCharArray()) {
+                bw.write(charCodeMap.get(c)); // Write the code for each character
+            }
+            bw.write('\n'); // Add a newline character
+        }
+
+
+
+
+
+///////////////////////////////////////////
+StringBuilder compressedData = new StringBuilder();
+    char currentChar = ' ';
+    int count = 0;
+    String line;
+    while ((line = br.readLine()) != null) {
+        for (char c : line.toCharArray()) {
+            if (c == currentChar) {
+                count++;
+            } else {
+                if (count > 1) {
+                    compressedData.append(count).append(currentChar);
+                } else if (count == 1) {
+                    compressedData.append(currentChar);
+   }
+            }
+        }
+}
